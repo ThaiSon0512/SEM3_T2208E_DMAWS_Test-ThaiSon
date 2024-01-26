@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Thêm</title>
+</head>
+
+<body>
+    <div class="container mt-3">
+        <h2> Thêm Order</h2>
+        <form>
+            <div class="mb-3 mt-3">
+                <label for="name">Tên</label>
+                <input type="text" class="form-control" id="itemName" placeholder="Enter name" name="itemName">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="address">itemQty</label>
+                <input type="text" class="form-control" id="itemQty" placeholder="Enter itemQty" name="itemQty">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="address">orderDelivery</label>
+                <input type="text" class="form-control" id="orderDelivery" placeholder="Enter orderDelivery"
+                    name="orderDelivery">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="address">orderAddress</label>
+                <input type="text" class="form-control" id="orderAddress" placeholder="Enter orderAddress"
+                    name="orderAddress">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="address">phoneNumber</label>
+                <input type="text" class="form-control" id="phoneNumber" placeholder="Enter phoneNumber"
+                    name="phoneNumber">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-add">Thêm</button>
+        </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(".btn-add").click(function (e) {
+            e.preventDefault();
+            var data = {
+                itemName: $("#itemName").val(),
+                itemQty: $("#itemQty").val(),
+                orderDelivery: $("#orderDelivery").val(),
+                orderAddress: $("#orderAddress").val(),
+
+                phoneNumber: $("#phoneNumber").val()
+
+
+            }
+            console.log(data);
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "https://localhost:7263/api/Order/PostOrder",
+
+                data: JSON.stringify(data),
+                success: function (response) {
+                    console.log(response);
+                    Swal.fire(
+                        'Success!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                    setTimeout(() => {
+                        window.location.href = "index.html";
+                    }, 1500);
+
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

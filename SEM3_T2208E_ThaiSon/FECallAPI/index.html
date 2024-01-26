@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container mt-3">
+        <a href="create.html" type="button" class="btn btn-primary">Thêm</a>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>ItemName</th>
+                    <th>itemQty</th>
+                    <th>orderDelivery</th>
+                    <th>orderAddress</th>
+                    <th>phoneNumber</th>
+
+                    <th>Xử lý</th>
+                </tr>
+            </thead>
+            <tbody id="test">
+
+            </tbody>
+        </table>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $.ajax({
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            url: "https://localhost:7263/api/Order/GetOrderTbl",
+
+            success: function (response) {
+                var strResult = "";
+                response.forEach(element => {
+                    strResult += ` 
+                <tr>
+                    <td>${element.itemCode}</td>
+                    <td>${element.itemName}</td>
+                    <td>${element.itemQty}</td>
+                    <td>${element.orderDelivery}</td>
+                    <td>${element.orderAddress}</td>
+                    <td>${element.phoneNumber}</td>
+
+                    <td>
+                        <a type="button" class="btn btn-primary" href="update.html?id=${element.itemCode}">Sửa</a>
+                        <button type="button" class="btn btn-danger" onclick="Delete(${element.itemCode})">Xoá</button>
+                    </td>
+                 </tr>
+                `
+                });
+                console.log(strResult);
+                $("#test").html(strResult);
+            }
+        });
+    </script>
+    <!-- <script>
+        function Delete(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        type: "Delete",
+                        contentType: "application/json; charset=utf-8",
+                        url: "https://web-a6jxeqwwgmey6.azurewebsites.net/api/User/" + id,
+                        success: function (response) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            setTimeout(() => {
+                                location.reload();
+                            }, 1500);
+
+                        }
+                    });
+                }
+            })
+
+        }
+    </script> -->
+</body>
+
+</html>

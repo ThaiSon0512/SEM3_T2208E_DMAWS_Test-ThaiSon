@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{83DC1402-89F7-4C49-9E91-C24CE25F0877}|https">
+  <MonoDevelop.Ide.ItemProperties.ExamViewMVC FirstBuild="True" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.examthaison PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="examthaison/ExamDbContext.cs">
+    <Files>
+      <File FileName="examthaison/Controllers/WeatherForecastController.cs" />
+      <File FileName="examthaison/appsettings.json" />
+      <File FileName="examthaison/Program.cs" />
+      <File FileName="examthaison/ExamDbContext.cs" Line="16" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="examthaison" expanded="True">
+            <Node name="examthaison">
+              <Node name="Controllers" expanded="True" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+</Properties>
